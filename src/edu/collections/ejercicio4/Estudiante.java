@@ -4,19 +4,24 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public class Estudiante {
-    String nombre;
-    Set<String> asignaturasAprovadas;
-    Set<String> asignaturasPendientes;
+    private String nombre;
+    private Set<String> asignaturasAprovadas;
+    private Set<String> asignaturasPendientes;
 
     public Estudiante(String nombre) {
         this.nombre = nombre;
     }
-    public void cursarAsignaturas(String asignatura, boolean aprovada){
-        aprovada = true;
-        if (asignaturasAprovadas.contains(asignatura)){
-            System.out.println("ya ha cursado la asignatura "+asignatura);
-        }else {
+    public void cursarAsignatura(String asignatura, boolean aprobada) {
+
+        if (asignaturasAprovadas.contains(asignatura)) {
+            System.out.println("Ya ha cursado esa asignatura");
+            return;
+        }
+        if (aprobada) {
             asignaturasAprovadas.add(asignatura);
+            asignaturasPendientes.remove(asignatura);
+        } else {
+            asignaturasPendientes.add(asignatura);
         }
     }
 
@@ -42,5 +47,13 @@ public class Estudiante {
 
     public void setAsignaturasAprovadas(Set<String> asignaturasAprovadas) {
         this.asignaturasAprovadas = asignaturasAprovadas;
+    }
+    @Override
+    public String toString() {
+        return "Estudiante{" +
+                "nombre='" + nombre + '\'' +
+                ", asignaturasAprovadas=" + asignaturasAprovadas +
+                ", asignaturasPendientes=" + asignaturasPendientes +
+                '}';
     }
 }

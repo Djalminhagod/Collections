@@ -11,6 +11,7 @@ public class Principal {
         inventario.put("anillo",2);
         inventario.put("pulsera",1);
         inventario.put("piercing",3);
+        System.out.println("este es el inventario: "+inventario);
         inventario.merge("anillo",1, Integer::sum);
         System.out.println("este es el inventario: "+inventario);
         inventario.remove("pulsera");
